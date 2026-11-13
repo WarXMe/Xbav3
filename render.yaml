@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: python bot.py
+    startCommand: BOT_TOKEN=9091153277:AAEQeCL1AwooOzUJgJEP7tTEyVDtuW82UNk ADMIN_ID=8381786447 python bot.py
     envVars:
       - key: BOT_TOKEN
         value: 9091153277:AAEQeCL1AwooOzUJgJEP7tTEyVDtuW82UNk

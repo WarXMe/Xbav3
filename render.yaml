@@ -7,6 +7,6 @@ services:
     startCommand: python bot.py
     envVars:
       - key: BOT_TOKEN
-        sync: false
+        value: 9091153277:AAEQeCL1AwooOzUJgJEP7tTEyVDtuW82UNk
       - key: ADMIN_ID
-        sync: false
+        value: "8381786447"

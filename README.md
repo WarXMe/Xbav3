@@ -1,36 +1,40 @@
-# 🎮 Xbox Checker Pro
+# 🎮 QilinMail Xbox Checker v3
 
 **MADE BY @NUTFRR**
 
-Premium Xbox / Microsoft account checker Telegram bot.
+> Xbox / Microsoft account checker with full Telegram bot interface.
 
-## Features
+---
 
-- ✅ **Single account check** — validates email:pass via Xbox API
-- 📂 **Bulk check** — upload `.txt` file (up to 10,000 accounts)  
-- 🎮 **Rich data** — gamertag, gamerscore, tier, tenure, friends, subscriptions
-- 🎯 **Game Pass / Xbox Gold** detection
-- 📊 **Live progress bar** during bulk checks
-- 🛑 **Stop button** — cancel bulk check mid-run
-- 📡 **Hits channel** — auto-forward hits to a Telegram channel
-- 📁 **Result files** — hits.txt + bad.txt sent after bulk check
-- 🔑 **Key-based access** — `NUTFRR-XXXXXXXXXXXX` format keys
-- 🛡️ **Admin panel** — auth users, gen keys, stats, broadcast
+## 📁 Files
 
-## Setup
+| File | Description |
+|---|---|
+| `checker_fixed.py` | QilinMail 6K-line checker (bug-fixed) |
+| `tg_bot.py` | Telegram bot wrapper |
+| `requirements.txt` | Python dependencies |
+
+---
+
+## ⚙️ Setup
 
 ```bash
 pip install -r requirements.txt
+
+# Set your bot token + admin ID
 export BOT_TOKEN="your_telegram_bot_token"
-export ADMIN_ID="your_telegram_user_id"
-python bot.py
+export ADMIN_IDS="your_telegram_user_id"
+
+python tg_bot.py
 ```
 
-## Commands
+---
+
+## 🤖 Bot Commands
 
 | Command | Description |
 |---|---|
-| `/start` | Main menu |
+| `/start` | Main menu with inline buttons |
 | `/check email:pass` | Single account check |
 | `/redeem KEY` | Redeem access key |
 | `/stats` | View your stats |
@@ -38,20 +42,37 @@ python bot.py
 | `/genkey [days\|lifetime]` | Generate key (admin) |
 | `/auth user_id [days]` | Authorize user (admin) |
 | `/revoke user_id` | Revoke user (admin) |
-| `/broadcast msg` | Message all users (admin) |
+| `/broadcast message` | Message all users (admin) |
 
-## Bot Flow
+---
+
+## 🔑 Key Format
 
 ```
-/start → main menu
-  ├── 🎮 Check Single → send email:pass → result
-  ├── 📂 Check File  → upload .txt → live progress → hits.txt + bad.txt
-  ├── 📊 My Stats
-  ├── 📋 Last Hits
-  ├── 🔑 Redeem Key  → /redeem CODE
-  └── 🛡️ Admin Panel → manage users, keys, stats
+NUTFRR-XXXXXXXXXXXX
 ```
 
-## Credits
+---
+
+## ✨ Features
+
+- 🎮 **Single Check** — inline button flow, instant result
+- 📂 **Bulk Check** — upload `.txt`, live progress bar `[████░░░░░░] 40%`
+- 🛑 **Stop Button** — cancel bulk mid-run
+- 🎯 **Hit Detection** — Xbox Live auth chain
+- 📡 **Hits Channel** — auto-forward hits to Telegram channel
+- 📁 **Result Files** — `hits.txt` + `bad.txt` sent after bulk
+- 🔑 **Key System** — `1d / 7d / 30d / lifetime` keys
+- 🛡️ **Admin Panel** — gen keys, auth/revoke users, broadcast, set channel
+- 📊 **Stats** — per-user and global stats
+
+---
+
+## 🐛 Bugs Fixed in checker_fixed.py
+
+1. **Line 198** — `p.get()` / `p['data']` → fixed to `pjson.get()` / `pjson['data']` (NameError: `p` was undefined)
+2. **Line 5889** — `retries += 1` without `stats_lock` → thread-safe fix applied
+
+---
 
 **MADE BY @NUTFRR**
